@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient("inventory-service")
+@FeignClient(url = "http://localhost:8080")
 public interface InventoryClient {
     @RequestMapping(method = RequestMethod.GET, value = "/api/v1/inventory/{isbn}")
     ResponseEntity<String> getBookByIsbn(@PathVariable String isbn);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/api/v1/inventory" )
+    @RequestMapping(method = RequestMethod.GET, value = "/api/v1/inventory")
     ResponseEntity<List<BookDto>> getAllBooks();
 }
